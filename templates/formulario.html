@@ -3,24 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FORMULARIO</title>
+    <title>Formulario Estudiantil</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            margin-top: 15px;
+            background-color: #007BFF;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            width: 300px;
+        }
+
+        li {
+            background: white;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </head>
 <body>
+
     <form method="POST" action="/registro">       
-    <label for="nombre"> NOMBRE DEL ESTUDIANTE:  </label>
-    <br>
-    <input type="text" name="nombre" >
-    <br>
-    <label for="correo"> CORREO DE ESTUDIANTE: </label>
-    <br>
-    <input type="email" name="correo">
-    <br>
-    <button type="submit"> ENVIAR </button>
+        <label for="nombre">Nombre del Estudiante</label>
+        <input type="text" name="nombre" placeholder="Ingrese su nombre">
+        
+        <label for="correo">Correo del Estudiante</label>
+        <input type="email" name="correo" placeholder="Ingrese su correo">
+        
+        <button type="submit">Enviar</button>
     </form>
 
-
-
-
+    <h2>Listado de Estudiantes</h2>
+    <ul>
+        {% for estudiantes in listado %}
+        <li>{{ estudiantes.nombre }} - {{ estudiantes.correo }}</li>
+        {% endfor %}
+    </ul>
 
 </body>
 </html>
